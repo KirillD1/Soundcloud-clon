@@ -1,228 +1,154 @@
-# 🎵 SoundCloud Clone
+Вот профессиональный перевод твоего файла README.md на английский язык. Этот вариант идеально подходит для GitHub и будет отлично смотреться в глазах зарубежных рекрутеров.
 
-Полнофункциональный клон SoundCloud, разработанный на **Java Spring Boot** (backend) и **React** (frontend).
+🎵 SoundCloud Clone
+A full-stack SoundCloud clone developed using Java Spring Boot (backend) and React (frontend).
 
-## 📋 Возможности
+📋 Features
+✅ User registration and authentication (JWT)
 
-- ✅ Регистрация и аутентификация (JWT)
-- ✅ Загрузка треков (MP3, WAV)
-- ✅ Воспроизведение с визуализацией волн (WaveSurfer.js)
-- ✅ Лайки треков
-- ✅ Комментарии с таймстемпами
-- ✅ Поиск по трекам и жанрам
-- ✅ Trending треки
-- ✅ Адаптивный дизайн
+✅ Track uploads (MP3, WAV)
 
-## 🛠️ Технологии
+✅ Audio playback with waveform visualization (WaveSurfer.js)
 
-### Backend
-- Java 17
-- Spring Boot 3.2
-- Spring Security + JWT
-- Spring Data JPA
-- PostgreSQL
-- Redis (кэширование)
-- Maven
+✅ Track likes and social interactions
 
-### Frontend
-- React 18
-- React Router
-- Axios
-- WaveSurfer.js
-- Tailwind CSS
-- React Icons
+✅ Timestamped comments
 
-## 🚀 Быстрый старт
+✅ Search functionality by tracks and genres
 
-### Вариант 1: С Docker (рекомендуется)
+✅ Trending tracks section
 
-```bash
-# Клонируйте репозиторий
+✅ Fully responsive design
+
+🛠️ Tech Stack
+Backend
+Java 17
+
+Spring Boot 3.2
+
+Spring Security + JWT
+
+Spring Data JPA
+
+PostgreSQL
+
+Redis (Caching)
+
+Maven
+
+Frontend
+React 18
+
+React Router
+
+Axios
+
+WaveSurfer.js
+
+Tailwind CSS
+
+React Icons
+
+🚀 Quick Start
+Option 1: Using Docker (Recommended)
+Bash
+
+# Clone the repository
 cd soundcloud-clone
 
-# Запустите все сервисы
-docker-compose up -d
+# Start all services
+docker-compose up -d --build
+Application will be available at:
 
-# Приложение будет доступно:
-# Frontend: http://localhost:3000
-# Backend API: http://localhost:8080
-```
+Frontend: http://localhost:3000
 
-### Вариант 2: Локальная разработка
+Backend API: http://localhost:8080/api
 
-#### Требования
-- Java 17+
-- Node.js 18+
-- PostgreSQL 15+
-- Redis 7+
-- Maven 3.8+
+Option 2: Local Development
+Prerequisites
+Java 17+
 
-#### Backend
+Node.js 18+
 
-```bash
+PostgreSQL 15+
+
+Redis 7+
+
+Maven 3.8+
+
+Backend Setup
+Bash
+
 cd backend
-
-# Создайте базу данных
+# Create the database
 createdb soundcloud
-
-# Настройте application.yml (если нужно)
-# Замените параметры подключения к БД
-
-# Запустите приложение
+# Run the application
 mvn spring-boot:run
+Frontend Setup
+Bash
 
-# API будет доступен на http://localhost:8080
-```
-
-#### Frontend
-
-```bash
 cd frontend
-
-# Установите зависимости
+# Install dependencies
 npm install
-
-# Запустите dev-сервер
+# Start dev server
 npm start
-
-# Приложение откроется на http://localhost:3000
-```
-
-## 📁 Структура проекта
-
-```
+📁 Project Structure
 soundcloud-clone/
 ├── backend/
 │   ├── src/main/java/com/soundcloud/
-│   │   ├── config/          # Конфигурация Spring
-│   │   ├── controller/      # REST контроллеры
+│   │   ├── config/          # Spring Configuration
+│   │   ├── controller/      # REST Controllers
 │   │   ├── dto/             # Data Transfer Objects
-│   │   ├── exception/       # Обработка ошибок
-│   │   ├── model/           # JPA сущности
-│   │   ├── repository/      # Spring Data репозитории
-│   │   ├── security/        # JWT и Security
-│   │   └── service/         # Бизнес-логика
+│   │   ├── exception/       # Global Exception Handling
+│   │   ├── model/           # JPA Entities
+│   │   ├── repository/      # Spring Data Repositories
+│   │   ├── security/        # JWT & Security Logic
+│   │   └── service/         # Business Logic
 │   ├── pom.xml
 │   └── Dockerfile
 ├── frontend/
-│   ├── public/
 │   ├── src/
-│   │   ├── components/      # React компоненты
-│   │   ├── pages/           # Страницы
-│   │   ├── services/        # API вызовы
-│   │   ├── context/         # React Context
+│   │   ├── components/      # React Components
+│   │   ├── pages/           # Page Views
+│   │   ├── services/        # API Integration
 │   │   └── App.js
-│   ├── package.json
 │   └── Dockerfile
-└── docker-compose.yml
-```
+└── docker-compose.yml       # Docker Orchestration
+🔑 Key API Endpoints
+Authentication
+POST /api/auth/register - User registration
 
-## 🔑 API Эндпоинты
+POST /api/auth/login - User login
 
-### Аутентификация
-```
-POST /api/auth/register    - Регистрация
-POST /api/auth/login       - Вход
-```
+Tracks
+GET /api/tracks - Fetch all tracks
 
-### Треки
-```
-GET    /api/tracks              - Все треки
-GET    /api/tracks/trending     - Популярные треки
-GET    /api/tracks/search?q=    - Поиск треков
-GET    /api/tracks/{id}         - Детали трека
-POST   /api/tracks              - Загрузка трека
-DELETE /api/tracks/{id}         - Удаление трека
-GET    /api/tracks/{id}/stream  - Стриминг аудио
-```
+POST /api/tracks - Upload a new track
 
-### Лайки
-```
-POST /api/tracks/{id}/like      - Поставить/убрать лайк
-```
+GET /api/tracks/{id}/stream - Audio streaming
 
-### Комментарии
-```
-GET    /api/tracks/{id}/comments    - Все комментарии
-POST   /api/tracks/{id}/comments    - Добавить комментарий
-DELETE /api/comments/{id}           - Удалить комментарий
-```
+💾 Database Schema
+The schema is automatically generated on startup via hibernate.ddl-auto=update.
 
-## 💾 База данных
+Core Tables:
 
-Схема автоматически создаётся при первом запуске благодаря `spring.jpa.hibernate.ddl-auto=update`.
+users - User profiles and credentials
 
-Основные таблицы:
-- `users` - Пользователи
-- `tracks` - Треки
-- `likes` - Лайки
-- `comments` - Комментарии
-- `follows` - Подписки
+tracks - Metadata for uploaded music
 
-## 🔧 Конфигурация
+follows - User-to-user social relations
 
-### Backend (application.yml)
-```yaml
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/soundcloud
-    username: postgres
-    password: password
-  
-  jpa:
-    hibernate:
-      ddl-auto: update
+likes / comments - User engagement data
 
-jwt:
-  secret: mySecretKeyForJWTTokenGenerationThatIsAtLeast256BitsLong
-  expiration: 86400000
+🔧 Configuration
+Backend Environment Variables
+SPRING_DATASOURCE_URL: PostgreSQL connection string
 
-file:
-  upload-dir: uploads
-```
+SPRING_DATA_REDIS_HOST: Redis host address
 
-### Frontend (.env)
-```
-REACT_APP_API_URL=http://localhost:8080/api
-```
+JWT_SECRET: Secret key for token generation
 
-## 📝 Примечания
+File Storage
+By default, files are stored locally in the ./uploads directory, which is mapped as a Docker volume for persistence.
 
-1. **Хранение файлов**: По умолчанию файлы сохраняются локально в папку `uploads/`. Для production рекомендуется использовать AWS S3 или подобные сервисы.
-
-2. **Безопасность**: Не забудьте изменить JWT secret в production!
-
-3. **CORS**: Настроен для `http://localhost:3000`. Измените в `SecurityConfig.java` для production.
-
-4. **Размер файлов**: Максимум 100MB. Настройте в `application.yml` при необходимости.
-
-## 🚀 Production Deploy
-
-Для production развёртывания:
-
-1. Измените JWT secret
-2. Настройте CORS для вашего домена
-3. Используйте AWS S3 для файлов
-4. Добавьте HTTPS
-5. Настройте Redis persistence
-6. Добавьте мониторинг и логирование
-
-## 📸 Скриншоты
-
-(Здесь могли бы быть скриншоты приложения)
-
-## 🤝 Вклад в проект
-
-Pull requests приветствуются! Для больших изменений сначала откройте issue.
-
-## 📄 Лицензия
-
-MIT
-
-## 👤 Автор
-
-Создано как pet-проект для портфолио.
-
----
-
-**Удачи с проектом! 🎶**
+Created as a pet project for portfolio purposes.
